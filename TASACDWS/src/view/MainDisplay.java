@@ -10,8 +10,6 @@ public class MainDisplay {
 	private int windowWidth;
 	private int windowHeight;
 	
-	private boolean ekman = true;
-	
 	private long lastFrame;
 	private int fps;
 	private long lastFPS;
