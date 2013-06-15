@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * A class representing a movable object.
+ * @author bellevik
+ *
+ */
+
 public interface IMovableGraphicsObject extends IGraphicObject {
 	public double getDX();
 	public double getDY();
