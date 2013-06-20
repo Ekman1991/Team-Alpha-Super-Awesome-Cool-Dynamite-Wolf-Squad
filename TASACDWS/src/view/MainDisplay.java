@@ -2,8 +2,18 @@ package view;
 
 import static org.lwjgl.opengl.GL11.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import model.GameContainer;
+import model.Settings;
+
 import org.lwjgl.opengl.*;
 import org.lwjgl.*;
+import org.newdawn.slick.opengl.Texture;
+import org.newdawn.slick.opengl.TextureLoader;
 
 public class MainDisplay {
 	
@@ -73,7 +83,38 @@ public class MainDisplay {
 	}
 
 	private void loadGraphics() {
+		String[] types = GameContainer.getContainer().filterDSStore(new File(Settings.resources + "/grc").list());
+		String[] models;
+		String[] images;
+		Texture[] textures;
 		
+		try {
+			//System.out.println("Width:" + TextureLoader.getTexture("PNG", new FileInputStream(new File(Settings.resources + "/grc/world/world.png"))).getImageWidth());
+			
+			for(int i = 0; i < types.length; i++) {
+				//System.out.println(types[i]);
+				models = GameContainer.getContainer().filterDSStore(new File(Settings.resources + "/grc/" + types[i]).list());
+				if(models != null) {
+					for(int j = 0; j < models.length; j++) {
+						//System.out.println(models[j]);
+						images = GameContainer.getContainer().filterDSStore(new File(Settings.resources + "/grc/" + types[i] + "/" + models[j]).list());
+						if(images != null) {
+							textures = new Texture[images.length];
+							for(int k = 0; k < images.length; k++) {
+								//System.out.println(images[k]);
+								textures[k] = TextureLoader.getTexture("PNG", new FileInputStream(new File(Settings.resources + "/grc/" + types[i] + "/" + models[j] + "/" + images[k])));
+								GameContainer.getContainer().addModel(types[i], models[j], textures);
+								// throw it into GameContainer
+							}
+						}
+					}
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void setUpGameObjects() {
