@@ -13,10 +13,17 @@ public class Settings {
 	public static final int MOVE_RIGHT = 1;
 	public static final int MOVE_UP = 2;
 	public static final int MOVE_DOWN = 3;
-		
+	
+	private int windowWidth;
+	private int windowHeight;
+	
+	
 	private int[] controlKeys;
 		
 	public Settings() {
+		windowWidth = 1280;
+		windowHeight = 800;
+		
 		controlKeys = new int[4];
 		setControlKeys(new int[] {Keyboard.KEY_A, Keyboard.KEY_D, Keyboard.KEY_W, Keyboard.KEY_S});
 	}
@@ -29,12 +36,28 @@ public class Settings {
 		return settings;
 	}
 	
+	public int getWindowWidth() {
+		return windowWidth;
+	}
+	
+	public int getWindowHeight() {
+		return windowHeight;
+	}
+	
 	public int getControlKey(int key) {
 		return controlKeys[key];
 	}
 	
 	public int getNumberOfKeys() {
 		return controlKeys.length;
+	}
+	
+	public void setWindowWidth(int width) {
+		windowWidth = width;
+	}
+	
+	public void setWindowHeight(int height) {
+		windowHeight = height;
 	}
 	
 	public void setControlKey(int key, int index) {

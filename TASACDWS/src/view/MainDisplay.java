@@ -21,9 +21,6 @@ import characters.TestPlayer;
 
 public class MainDisplay {
 	
-	private int windowWidth;
-	private int windowHeight;
-	
 	private long lastFrame;
 	private int fps;
 	private long lastFPS;
@@ -36,9 +33,6 @@ public class MainDisplay {
 	private Input input;
 	
 	public MainDisplay() {
-		windowWidth = 800;
-		windowHeight = 600;
-		
 		input = new Input(this);
 		
 		setUpDisplay();
@@ -129,7 +123,7 @@ public class MainDisplay {
 
 	private void setUpDisplay() {
 		try {
-			Display.setDisplayMode(new DisplayMode(windowWidth,windowHeight));
+			Display.setDisplayMode(new DisplayMode(Settings.getSettings().getWindowWidth(),Settings.getSettings().getWindowHeight()));
 			Display.setTitle("Team Alpha Super Awesome Cool Dynamite Wolf Squad");
 			Display.create();
 		} catch(LWJGLException e) {
@@ -140,7 +134,7 @@ public class MainDisplay {
 	private void setupOpenGL() {
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		glOrtho(0, windowWidth, windowHeight, 0, 1, -1);
+		glOrtho(0, Settings.getSettings().getWindowWidth(), Settings.getSettings().getWindowHeight(), 0, 1, -1);
 		glMatrixMode(GL_MODELVIEW);
 		glEnable(GL_TEXTURE_2D);
 		glEnable(GL_BLEND);

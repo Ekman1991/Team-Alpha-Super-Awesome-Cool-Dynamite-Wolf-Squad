@@ -24,6 +24,19 @@ public class Input {
 	}
 	
 	public void getInput() {
+		while (Keyboard.next()) {
+		    if (Keyboard.getEventKeyState()) {
+		        if (Keyboard.getEventKey() == Keyboard.KEY_F) {
+		        	display.setDisplayMode(Settings.getSettings().getWindowWidth(), Settings.getSettings().getWindowHeight(), !Display.isFullscreen());
+		        } else if (Keyboard.getEventKey() == Keyboard.KEY_V) {
+		        	display.setVSync(!display.getVSync());
+		        	Display.setVSyncEnabled(display.getVSync());
+		        } else if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE) {
+		        	display.setIsRunning(false);
+		        } 
+		    }
+		}
+		
 		if(Keyboard.isKeyDown(Settings.getSettings().getControlKey(Settings.MOVE_LEFT)) && !Keyboard.isKeyDown(Settings.getSettings().getControlKey(Settings.MOVE_RIGHT))) {
 			GameContainer.getContainer().getPlayer().setDX(-0.3);
 		} else if(Keyboard.isKeyDown(Settings.getSettings().getControlKey(Settings.MOVE_RIGHT)) && !Keyboard.isKeyDown(Settings.getSettings().getControlKey(Settings.MOVE_LEFT))) {
