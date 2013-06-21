@@ -6,11 +6,12 @@ package model;
  *
  */
 
-public interface IMovableGraphicsObject extends IGraphicObject {
+public interface IMovableGraphicObject extends IGraphicObject {
 	public double getDX();
 	public double getDY();
 	public void setDX(double dx);
 	public void setDY(double dy);
+	public void rotate(float angle);
 	public boolean getIsMoving();
 	public void setIsMoving(boolean isMoving);
 }
