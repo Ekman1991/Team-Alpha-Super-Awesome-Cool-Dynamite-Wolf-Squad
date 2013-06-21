@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import org.newdawn.slick.opengl.Texture;
 
+import characters.TestPlayer;
+
 /**
  * Singelton class containing all gamedata.
  * Here we will store the Player, the GameWorld(s), the graphics etc
@@ -14,6 +16,8 @@ import org.newdawn.slick.opengl.Texture;
 public class GameContainer {
 
 	private static GameContainer container;
+	
+	private TestPlayer player;
 	
 	/**
 	 * First String: Type of graphic;
@@ -78,5 +82,13 @@ public class GameContainer {
 		
 		
 		return null;
+	}
+	
+	public TestPlayer getPlayer() {
+		return player;
+	}
+	
+	public void setPlayer(TestPlayer player) {
+		this.player = player;
 	}
 }

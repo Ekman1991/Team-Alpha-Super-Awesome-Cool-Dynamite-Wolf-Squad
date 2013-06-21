@@ -15,6 +15,10 @@ import org.lwjgl.*;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 
+import controller.Input;
+
+import characters.TestPlayer;
+
 public class MainDisplay {
 	
 	private int windowWidth;
@@ -29,9 +33,13 @@ public class MainDisplay {
 	
 	private boolean vsync;
 	
+	private Input input;
+	
 	public MainDisplay() {
 		windowWidth = 800;
 		windowHeight = 600;
+		
+		input = new Input(this);
 		
 		setUpDisplay();
 		setupOpenGL();
@@ -45,6 +53,8 @@ public class MainDisplay {
 		
 		while(isRunning) {
 			int delta = getDelta();
+			
+			input.getInput();
 			
 			renderGL();
 			update(delta);
@@ -63,16 +73,12 @@ public class MainDisplay {
 	private void renderGL() {
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 		
-		glBegin(GL_QUADS);
-			glVertex2i(300, 300);
-			glVertex2i(400, 300);
-			glVertex2i(400, 400);
-			glVertex2i(300, 400);
-		glEnd();
-		
+		GameContainer.getContainer().getPlayer().draw();
 	}
 	
 	private void update(int delta) {
+		
+		GameContainer.getContainer().getPlayer().update(delta);
 		
 		updateFPS();
 	}
@@ -118,7 +124,7 @@ public class MainDisplay {
 	}
 	
 	private void setUpGameObjects() {
-		
+		GameContainer.getContainer().setPlayer(new TestPlayer(100, 100, 64, 64));
 	}
 
 	private void setUpDisplay() {
