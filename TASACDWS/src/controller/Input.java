@@ -33,7 +33,9 @@ public class Input {
 		        	Display.setVSyncEnabled(display.getVSync());
 		        } else if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE) {
 		        	display.setIsRunning(false);
-		        } 
+		        } else if (Keyboard.getEventKey() == Keyboard.KEY_M) {
+		        	Settings.getSettings().setMouseWalk(!Settings.getSettings().getMouseWalk());
+		        }
 		    }
 		}
 		

@@ -36,6 +36,9 @@ public abstract class AbstractMovableGraphicObject extends
 				dx = 0;
 				dy = 0;
 			}
+		} else {
+			moveToX = x;
+			moveToY = y;
 		}
 		
 		if(dx != 0 || dy != 0) {

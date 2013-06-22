@@ -19,7 +19,7 @@ public class Settings {
 	
 	private int walkButton;
 	private int actionButton;
-	private boolean mouseWalk = true;
+	private boolean mouseWalk = false;
 	
 	private int[] controlKeys;
 		
