@@ -17,6 +17,9 @@ public class Settings {
 	private int windowWidth;
 	private int windowHeight;
 	
+	private int walkButton;
+	private int actionButton;
+	private boolean mouseWalk = true;
 	
 	private int[] controlKeys;
 		
@@ -24,6 +27,8 @@ public class Settings {
 		windowWidth = 1280;
 		windowHeight = 800;
 		
+		walkButton = 0;
+		actionButton = 1;
 		controlKeys = new int[4];
 		setControlKeys(new int[] {Keyboard.KEY_A, Keyboard.KEY_D, Keyboard.KEY_W, Keyboard.KEY_S});
 	}
@@ -48,6 +53,18 @@ public class Settings {
 		return controlKeys[key];
 	}
 	
+	public int getWalkButton() {
+		return walkButton;
+	}
+	
+	public int getActionButton() {
+		return actionButton;
+	}
+	
+	public boolean getMouseWalk() {
+		return mouseWalk;
+	}
+	
 	public int getNumberOfKeys() {
 		return controlKeys.length;
 	}
@@ -68,6 +85,20 @@ public class Settings {
 		for(int i = 0; i < controlKeys.length; i++) {
 			this.controlKeys[i] = controlKeys[i];
 		}
+	}
+	
+	public void setMouseButtons() {
+		if(walkButton == 0) {
+			walkButton = 1;
+			actionButton = 0;
+		} else {
+			walkButton = 0;
+			actionButton = 1;
+		}
+	}
+	
+	public void setMouseWalk(boolean mouseWalk) {
+		this.mouseWalk = mouseWalk;
 	}
 	
 }
