@@ -14,8 +14,10 @@ import characters.TestPlayer;
  */
 
 public class GameContainer {
-
+	
 	private static GameContainer container;
+	
+	private GameState state;
 	
 	private TestPlayer player;
 	
@@ -27,6 +29,8 @@ public class GameContainer {
 	private HashMap<String, HashMap<String , Texture[]>> graphics;
 	
 	public GameContainer() {
+		state = GameState.INTRO;
+		
 		graphics = new HashMap<String, HashMap<String, Texture[]>>();
 	}
 	
@@ -90,5 +94,13 @@ public class GameContainer {
 	
 	public void setPlayer(TestPlayer player) {
 		this.player = player;
+	}
+	
+	public GameState getCurrentState() {
+		return state;
+	}
+	
+	public void setCurrentState(GameState state) {
+		this.state = state;
 	}
 }

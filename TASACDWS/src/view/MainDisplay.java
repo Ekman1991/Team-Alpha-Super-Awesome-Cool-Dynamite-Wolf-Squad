@@ -67,7 +67,36 @@ public class MainDisplay {
 	private void renderGL() {
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 		
-		GameContainer.getContainer().getPlayer().draw();
+		switch(GameContainer.getContainer().getCurrentState()) {
+		
+		case INTRO:
+			GameContainer.getContainer().getPlayer().draw();
+			break;
+			
+		case MAINMENU:
+			
+			break;
+			
+		case CLASSELECTOR:
+			
+			break;
+			
+		case GAME:
+			
+			break;
+			
+		case SHOP:
+			
+			break;
+			
+		case OPTIONS:
+			
+			break;
+			
+		case EXTRAS:
+			
+			break;
+		}
 	}
 	
 	private void update(int delta) {
