@@ -96,6 +96,14 @@ public class MainDisplay {
 		case EXTRAS:
 			
 			break;
+			
+		case EDITORMENU:
+		
+			break;
+		
+		case EDITOR:
+			
+			break;
 		}
 	}
 	
