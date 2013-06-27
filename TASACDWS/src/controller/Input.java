@@ -39,7 +39,7 @@ public class Input {
 		    }
 		}
 		
-		// Move the cahracter with keyboard or mouse
+		// Move the character with keyboard or mouse
 		if(Settings.getSettings().getMouseWalk()) {
 			while(Mouse.next()) {
 				if(Mouse.isButtonDown(Settings.getSettings().getActionButton())) {
