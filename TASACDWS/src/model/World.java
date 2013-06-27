@@ -12,7 +12,6 @@ public class World {
 		if(instance == null) {
 			instance = new World();
 		}
-		
 		return instance;
 	}
 	
