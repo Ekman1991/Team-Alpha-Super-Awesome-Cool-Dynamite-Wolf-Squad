@@ -9,7 +9,6 @@ public class World {
 		double worldHeight = Settings.getSettings().getWindowHeight()/Settings.tileSize;
 		
 		
-		
 		worldMatrix = new Tile[0][0];
 	}
 	
