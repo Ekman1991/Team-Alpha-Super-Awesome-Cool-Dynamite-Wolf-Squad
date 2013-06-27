@@ -14,6 +14,8 @@ public class Settings {
 	public static final int MOVE_UP = 2;
 	public static final int MOVE_DOWN = 3;
 	
+	asdsdas
+	
 	private int windowWidth;
 	private int windowHeight;
 	
