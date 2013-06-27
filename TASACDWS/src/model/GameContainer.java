@@ -24,6 +24,10 @@ public class GameContainer {
 	
 	private Block[] blocks;
 	
+	private Tile[][] tiles;
+	private int worldWidth;
+	private int worldHeight;
+	
 	/**
 	 * First String: Type of graphic;
 	 * Second String: Model
@@ -37,6 +41,23 @@ public class GameContainer {
 		graphics = new HashMap<String, HashMap<String, Texture[]>>();
 		
 		blocks = new Block[1];
+		
+		double tempWidth = Settings.getSettings().getWindowWidth()/Settings.tileSize;
+		double tempHeight = Settings.getSettings().getWindowHeight()/Settings.tileSize;
+		// if ( 2 % 2 == 0)
+
+		worldWidth = (int)tempWidth;
+		worldHeight = (int)tempHeight;
+
+		if(((int)(tempWidth*2))%2 != 0) {
+			worldWidth += 1;
+		}
+
+		if(((int)(tempHeight*2))%2 != 0) {
+			worldHeight += 1;
+		} 
+
+		tiles = new Tile[worldWidth][worldHeight];
 	}
 	
 	public synchronized static GameContainer getContainer() {
@@ -115,5 +136,21 @@ public class GameContainer {
 	
 	public void setBlock(Block block) {
 		blocks[0] = block;
+	}
+	
+	public int getWorldWidth() {
+		return worldWidth;
+	}
+	
+	public int getWorldHeight() {
+		return worldHeight;
+	}
+	
+	public Tile getTile(int x, int y) {
+		return tiles[x][y];
+	}
+	
+	public void setTile(int x, int y, Tile tile) {
+		tiles[x][y] = tile;
 	}
 }

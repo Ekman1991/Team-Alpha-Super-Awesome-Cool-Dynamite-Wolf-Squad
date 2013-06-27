@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import model.GameContainer;
 import model.Settings;
+import model.Tile;
 
 import org.lwjgl.opengl.*;
 import org.lwjgl.*;
@@ -158,8 +159,23 @@ public class MainDisplay {
 	}
 	
 	private void setUpGameObjects() {
-		GameContainer.getContainer().setPlayer(new TestPlayer(100, 100, 32, 32));
+		GameContainer.getContainer().setPlayer(new TestPlayer(16, 16, 32, 32));
 		GameContainer.getContainer().setBlock(new Block(500, 500, 32, 32));
+		
+		// Generate invisible tiles
+		for(int i = 0; i < GameContainer.getContainer().getWorldWidth(); i++) {
+			for(int j = 0; j < GameContainer.getContainer().getWorldHeight(); j++) {
+				GameContainer.getContainer().setTile(i,j, new Tile(Settings.tileSize/2 + Settings.tileSize*i, Settings.tileSize/2 + Settings.tileSize*j, Settings.tileSize, Settings.tileSize));
+				if(GameContainer.getContainer().getPlayer().intersects(GameContainer.getContainer().getTile(i, j))) {
+					GameContainer.getContainer().getTile(i, j).addObjectToTile(GameContainer.getContainer().getPlayer());
+				}
+			}
+		}
+		
+		// You need a minX, maxX, minY and maxY in abstractmovablegraphicobject
+		// to know which tiles to check intersect with
+		
+		
 	}
 
 	private void setUpDisplay() {
