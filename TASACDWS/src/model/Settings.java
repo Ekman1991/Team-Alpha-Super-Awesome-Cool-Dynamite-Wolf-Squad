@@ -14,6 +14,8 @@ public class Settings {
 	public static final int MOVE_UP = 2;
 	public static final int MOVE_DOWN = 3;
 	
+	public static final int tileSize = 32;
+	
 	private int windowWidth;
 	private int windowHeight;
 	

@@ -1,5 +1,15 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Tile {
-	private IGraphicObject[] graphicObjects;
+	private ArrayList<Tile> graphicObjects;
+	
+	
+	public Tile() {
+		
+	}
+	
+	
+	
 }
