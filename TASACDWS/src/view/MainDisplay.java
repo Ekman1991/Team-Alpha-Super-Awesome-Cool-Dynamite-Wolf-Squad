@@ -16,7 +16,7 @@ import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 
 import controller.Input;
-
+import characters.Block;
 import characters.TestPlayer;
 
 public class MainDisplay {
@@ -52,8 +52,8 @@ public class MainDisplay {
 			
 			input.getInput();
 			
-			renderGL();
 			update(delta);
+			renderGL();
 			
 			if(Display.isCloseRequested()) {
 				isRunning = false;
@@ -73,6 +73,7 @@ public class MainDisplay {
 		
 		case INTRO:
 			GameContainer.getContainer().getPlayer().draw();
+			GameContainer.getContainer().getBlock().draw();
 			break;
 			
 		case MAINMENU:
@@ -157,7 +158,8 @@ public class MainDisplay {
 	}
 	
 	private void setUpGameObjects() {
-		GameContainer.getContainer().setPlayer(new TestPlayer(100, 100, 64, 64));
+		GameContainer.getContainer().setPlayer(new TestPlayer(100, 100, 32, 32));
+		GameContainer.getContainer().setBlock(new Block(500, 500, 32, 32));
 	}
 
 	private void setUpDisplay() {

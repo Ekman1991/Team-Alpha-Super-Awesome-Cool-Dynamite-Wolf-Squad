@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.newdawn.slick.opengl.Texture;
 
+import characters.Block;
 import characters.TestPlayer;
 
 /**
@@ -21,6 +22,8 @@ public class GameContainer {
 	
 	private TestPlayer player;
 	
+	private Block[] blocks;
+	
 	/**
 	 * First String: Type of graphic;
 	 * Second String: Model
@@ -32,6 +35,8 @@ public class GameContainer {
 		state = GameState.INTRO;
 		
 		graphics = new HashMap<String, HashMap<String, Texture[]>>();
+		
+		blocks = new Block[1];
 	}
 	
 	public synchronized static GameContainer getContainer() {
@@ -102,5 +107,13 @@ public class GameContainer {
 	
 	public void setCurrentState(GameState state) {
 		this.state = state;
+	}
+	
+	public Block getBlock() {
+		return blocks[0];
+	}
+	
+	public void setBlock(Block block) {
+		blocks[0] = block;
 	}
 }
