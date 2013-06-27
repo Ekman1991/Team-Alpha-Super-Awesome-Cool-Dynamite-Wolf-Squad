@@ -23,7 +23,7 @@ public class Settings {
 	
 	private int[] controlKeys;
 		
-	private Settings() {
+	public Settings() {
 		windowWidth = 1280;
 		windowHeight = 800;
 		
