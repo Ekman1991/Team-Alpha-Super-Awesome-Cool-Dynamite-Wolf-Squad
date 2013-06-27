@@ -51,6 +51,7 @@ public class Input {
 			if(Mouse.isButtonDown(Settings.getSettings().getWalkButton())) {
 				GameContainer.getContainer().getPlayer().moveTo(Mouse.getX(), Settings.getSettings().getWindowHeight()-Mouse.getY());
 			}
+			
 		} else {
 			// Walking around with keyboard
 			if(Keyboard.isKeyDown(Settings.getSettings().getControlKey(Settings.MOVE_LEFT)) && !Keyboard.isKeyDown(Settings.getSettings().getControlKey(Settings.MOVE_RIGHT))) {

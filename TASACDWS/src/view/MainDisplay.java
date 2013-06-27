@@ -33,6 +33,8 @@ public class MainDisplay {
 	private Input input;
 	
 	public MainDisplay() {
+		System.out.println();
+		
 		input = new Input(this);
 		
 		setUpDisplay();

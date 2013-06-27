@@ -20,6 +20,7 @@ public abstract class AbstractMovableGraphicObject extends
 	@Override
 	public void update(int delta) {
 		
+		// Mouse-walk
 		if(Settings.getSettings().getMouseWalk()) {
 			
 			if(!(moveToX - x < 3 && moveToX - x > -3) || !(moveToY - y < 3 && moveToY - y > -3)) {
@@ -36,9 +37,11 @@ public abstract class AbstractMovableGraphicObject extends
 				dx = 0;
 				dy = 0;
 			}
+		// Not Mouse-walk
 		} else {
 			moveToX = x;
 			moveToY = y;
+			
 		}
 		
 		if(dx != 0 || dy != 0) {
@@ -46,6 +49,11 @@ public abstract class AbstractMovableGraphicObject extends
 		} else {
 			isMoving = false;
 		}
+		
+		//rotation = rotation + (float)Math.toDegrees(2*Math.PI);
+		
+		
+		
 		
 		this.x += delta * dx;
 		this.y += delta * dy;
