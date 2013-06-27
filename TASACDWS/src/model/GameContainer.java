@@ -28,7 +28,7 @@ public class GameContainer {
 	 */
 	private HashMap<String, HashMap<String , Texture[]>> graphics;
 	
-	public GameContainer() {
+	private GameContainer() {
 		state = GameState.INTRO;
 		
 		graphics = new HashMap<String, HashMap<String, Texture[]>>();
