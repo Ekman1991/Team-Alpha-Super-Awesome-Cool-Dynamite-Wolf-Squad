@@ -5,6 +5,8 @@ public abstract class AbstractMovableGraphicObject extends
 
 	protected double dx, dy, speed, moveToX, moveToY;
 	
+	protected int minTileX, maxTileX, minTileY, maxTileY;
+	
 	protected float angle;
 	
 	protected boolean isMoving = false;
@@ -86,6 +88,26 @@ public abstract class AbstractMovableGraphicObject extends
 	}
 	
 	@Override
+	public int getMinTileX() {
+		return minTileX;
+	}
+	
+	@Override
+	public int getMaxTileX() {
+		return maxTileX;
+	}
+	
+	@Override
+	public int getMinTileY() {
+		return minTileY;
+	}
+	
+	@Override
+	public int getMaxTileY() {
+		return maxTileY;
+	}
+	
+	@Override
 	public void setDX(double dx) {
 		this.dx = dx;
 	}
@@ -95,8 +117,29 @@ public abstract class AbstractMovableGraphicObject extends
 		this.dy = dy;
 	}
 	
+	@Override
 	public void setSpeed(double speed) {
 		this.speed = speed;
+	}
+	
+	@Override
+	public void setMinTileX(int minX) {
+		minTileX = minX;
+	}
+	
+	@Override
+	public void setMaxTileX(int maxX) {
+		maxTileX = maxX;
+	}
+	
+	@Override
+	public void setMinTileY(int minY) {
+		minTileY = minY;
+	}
+	
+	@Override
+	public void setMaxTileY(int maxY) {
+		maxTileY = maxY;
 	}
 	
 	@Override
