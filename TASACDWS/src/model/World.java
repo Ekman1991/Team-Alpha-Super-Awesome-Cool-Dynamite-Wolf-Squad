@@ -5,7 +5,7 @@ public class World {
 	private Tile[][] worldMatrix;
 	
 	private World () {
-		worldMatrix = new Tile[12][12];
+		worldMatrix = new Tile[Settings.getSettings().getWindowWidth()/Settings.tileSize][Settings.getSettings().getWindowHeight()/Settings.tileSize];
 	}
 	
 	public synchronized static World getWorld() {
