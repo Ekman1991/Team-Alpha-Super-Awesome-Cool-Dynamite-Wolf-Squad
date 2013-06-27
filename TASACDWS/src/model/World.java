@@ -5,7 +5,12 @@ public class World {
 	private Tile[][] worldMatrix;
 	
 	private World () {
-		worldMatrix = new Tile[Settings.getSettings().getWindowWidth()/Settings.tileSize][Settings.getSettings().getWindowHeight()/Settings.tileSize];
+		double worldWidth = Settings.getSettings().getWindowWidth()/Settings.tileSize;
+		double worldHeight = Settings.getSettings().getWindowHeight()/Settings.tileSize;
+		
+		
+		
+		worldMatrix = new Tile[0][0];
 	}
 	
 	public synchronized static World getWorld() {
