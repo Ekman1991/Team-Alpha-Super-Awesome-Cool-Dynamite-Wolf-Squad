@@ -54,6 +54,7 @@ public abstract class AbstractMovableGraphicObject extends
 		
 		//rotation = rotation + (float)Math.toDegrees(2*Math.PI);
 		
+		// Here we'll insert a check for which tiles you touch
 		
 		
 		
