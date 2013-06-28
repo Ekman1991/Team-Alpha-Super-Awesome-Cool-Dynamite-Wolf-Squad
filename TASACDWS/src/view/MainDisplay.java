@@ -162,12 +162,32 @@ public class MainDisplay {
 		GameContainer.getContainer().setPlayer(new TestPlayer(16, 16, 32, 32));
 		GameContainer.getContainer().setBlock(new Block(500, 500, 32, 32));
 		
+		// Set the player min-max x-y, tiles to check, outside the game-board
+		// So that min and max will definitely be on the board.
+		GameContainer.getContainer().getPlayer().setMaxTileX(-1);
+		GameContainer.getContainer().getPlayer().setMinTileX(GameContainer.getContainer().getWorldWidth()+1);
+		GameContainer.getContainer().getPlayer().setMaxTileY(-1);
+		GameContainer.getContainer().getPlayer().setMinTileY(GameContainer.getContainer().getWorldHeight()+1);
+		
 		// Generate invisible tiles
 		for(int i = 0; i < GameContainer.getContainer().getWorldWidth(); i++) {
 			for(int j = 0; j < GameContainer.getContainer().getWorldHeight(); j++) {
 				GameContainer.getContainer().setTile(i,j, new Tile(Settings.tileSize/2 + Settings.tileSize*i, Settings.tileSize/2 + Settings.tileSize*j, Settings.tileSize, Settings.tileSize));
 				if(GameContainer.getContainer().getPlayer().intersects(GameContainer.getContainer().getTile(i, j))) {
 					GameContainer.getContainer().getTile(i, j).addObjectToTile(GameContainer.getContainer().getPlayer());
+					// Set the min-max tiles that the character is touching
+					if(i > GameContainer.getContainer().getPlayer().getMaxTileX()) {
+						GameContainer.getContainer().getPlayer().setMaxTileX(i);
+					}
+					if(i < GameContainer.getContainer().getPlayer().getMinTileX()) {
+						GameContainer.getContainer().getPlayer().setMinTileX(i);
+					}
+					if(j > GameContainer.getContainer().getPlayer().getMaxTileY()) {
+						GameContainer.getContainer().getPlayer().setMaxTileY(j);
+					}
+					if(j < GameContainer.getContainer().getPlayer().getMinTileY()) {
+						GameContainer.getContainer().getPlayer().setMinTileY(j);
+					}
 				}
 			}
 		}
