@@ -18,8 +18,8 @@ public interface IGraphicObject {
 	public void setLocation(double x, double y);
 	public void setX(double x);
 	public void setY(double y);
-	public void setWith(double width);
-	public void setHeight(double height);
+	public void setWith(int width);
+	public void setHeight(int height);
 	public void setRotation(float rotation);
 	public int getCurrentImage();
 	public void setCurrentImage(int index);
