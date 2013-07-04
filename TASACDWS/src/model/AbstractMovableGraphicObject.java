@@ -52,7 +52,7 @@ public abstract class AbstractMovableGraphicObject extends
 			isMoving = false;
 		}
 		
-		//rotation = rotation + (float)Math.toDegrees(2*Math.PI);
+		//rotation = rotation + (float)Math.toDegrees(Math.PI/10);
 		
 		// Here we'll insert a check for which tiles you touch
 		
@@ -61,38 +61,17 @@ public abstract class AbstractMovableGraphicObject extends
 		
 		
 		this.x += delta * dx;
-		this.y += delta * dy;
-	
 		if(this.intersects(GameContainer.getContainer().getBlock())) {
-
-			if(dx > 0) {
-				this.x -= delta * dx;
+			while(this.intersects(GameContainer.getContainer().getBlock())) {
+				this.x -= dx;
 			}
-			
-			if(dy != 0) {
-				this.y -= delta * dy;
-			}
-			
-			
-			if (this.northIntersect(GameContainer.getContainer().getBlock())) {
-				
-			}
-
-			if (this.eastIntersect(GameContainer.getContainer().getBlock())) {
-				
-			}
-
-			if (this.southIntersect(GameContainer.getContainer().getBlock())) {
-				
-			}
-
-			if (this.westIntersect(GameContainer.getContainer().getBlock())) {
-				
-			}
-			
-		
 		}
-		
+		this.y += delta * dy;
+		if(this.intersects(GameContainer.getContainer().getBlock())) {
+			while(this.intersects(GameContainer.getContainer().getBlock())) {
+				this.y -= dy;
+			}
+		}
 		
 		this.rotation += delta * angle;
 	}
