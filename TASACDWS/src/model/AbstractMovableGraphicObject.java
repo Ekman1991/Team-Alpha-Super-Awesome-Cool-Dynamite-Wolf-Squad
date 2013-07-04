@@ -55,20 +55,30 @@ public abstract class AbstractMovableGraphicObject extends
 		//rotation = rotation + (float)Math.toDegrees(Math.PI/10);
 		
 		// Here we'll insert a check for which tiles you touch
+		// Only checks tiles if they are on the screen
+		for(int i = minTileX-1; i <= maxTileX+1; i++) {
+			for(int j = minTileY-1; j <= maxTileY+1; j++) {
+				if(i >= 0 && j >= 0 && i <= GameContainer.getContainer().getWorldWidth() & j <= GameContainer.getContainer().getWorldHeight()) {
+					if(this.intersects(GameContainer.getContainer().getTile(i, j))) {
+						// Can't figure out how to change max-min x and y...
+					}
+				}
+			}
+		}
 		
-		//System.out.println(delta);
-		
-		
+		System.out.println("MinX: " + minTileX + ", MaxX: " + maxTileX + ", MinY: " + minTileY + ", MaxY: " + maxTileY);
 		
 		this.x += delta * dx;
-		if(this.intersects(GameContainer.getContainer().getBlock())) {
-			while(this.intersects(GameContainer.getContainer().getBlock())) {
+		// Checks if you collide with something or try to leave the screen
+		if(this.intersects(GameContainer.getContainer().getBlock()) || (x - width/2) < 0 || (x + width/2) > Settings.getSettings().getWindowWidth()) {
+			while(this.intersects(GameContainer.getContainer().getBlock()) || (x - width/2) < 0 || (x + width/2) > Settings.getSettings().getWindowWidth()) {
 				this.x -= dx;
 			}
 		}
+		
 		this.y += delta * dy;
-		if(this.intersects(GameContainer.getContainer().getBlock())) {
-			while(this.intersects(GameContainer.getContainer().getBlock())) {
+		if(this.intersects(GameContainer.getContainer().getBlock()) || (y - height/2) < 0 || (y + height/2) > Settings.getSettings().getWindowHeight()) {
+			while(this.intersects(GameContainer.getContainer().getBlock()) || (y - height/2) < 0 || (y + height/2) > Settings.getSettings().getWindowHeight()) {
 				this.y -= dy;
 			}
 		}
