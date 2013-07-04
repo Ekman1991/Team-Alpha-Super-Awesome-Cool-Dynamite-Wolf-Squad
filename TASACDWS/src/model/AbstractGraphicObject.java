@@ -16,14 +16,15 @@ import org.newdawn.slick.opengl.Texture;
 
 public abstract class AbstractGraphicObject implements IGraphicObject {
 
-	protected double x, y, width, height;
+	protected double x, y;
+	protected int width, height;
 	protected float rotation;
 	protected Rectangle hitbox = new Rectangle();
 	protected Texture[] textures = new Texture[1];
 	// The current shown image
 	protected int imageIndex;
 	
-	public AbstractGraphicObject(double x, double y, double width, double height, String type, String model) {
+	public AbstractGraphicObject(double x, double y, int width, int height, String type, String model) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -35,7 +36,7 @@ public abstract class AbstractGraphicObject implements IGraphicObject {
 	}
 	
 	// Used for invisible tiles
-	public AbstractGraphicObject(double x, double y, double width, double height) {
+	public AbstractGraphicObject(double x, double y, int width, int height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -109,12 +110,12 @@ public abstract class AbstractGraphicObject implements IGraphicObject {
 	}
 
 	@Override
-	public void setWith(double width) {
+	public void setWith(int width) {
 		this.width = width;
 	}
 
 	@Override
-	public void setHeight(double height) {
+	public void setHeight(int height) {
 		this.height = height;
 	}
 

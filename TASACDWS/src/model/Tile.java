@@ -6,7 +6,7 @@ public class Tile extends AbstractGraphicObject{
 	
 	private ArrayList<IMovableGraphicObject> graphicObjects;
 	
-	public Tile(double x, double y, double width, double height) {
+	public Tile(double x, double y, int width, int height) {
 		super(x, y, width, height);
 		
 		graphicObjects = new ArrayList<IMovableGraphicObject>();

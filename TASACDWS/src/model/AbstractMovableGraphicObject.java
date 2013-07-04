@@ -11,8 +11,8 @@ public abstract class AbstractMovableGraphicObject extends
 	
 	protected boolean isMoving = false;
 	
-	public AbstractMovableGraphicObject(double x, double y, double width,
-			double height, double speed, String type, String model) {
+	public AbstractMovableGraphicObject(double x, double y, int width,
+			int height, double speed, String type, String model) {
 		super(x, y, width, height, type, model);
 		this.speed = speed;
 		moveToX = x;

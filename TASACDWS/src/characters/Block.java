@@ -4,7 +4,7 @@ import model.AbstractGraphicObject;
 
 public class Block extends AbstractGraphicObject {
 
-	public Block(double x, double y, double width, double height) {
+	public Block(double x, double y, int width, int height) {
 		super(x, y, width, height, "tile", "test");
 	}
 
