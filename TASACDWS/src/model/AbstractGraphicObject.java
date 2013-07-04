@@ -19,6 +19,7 @@ public abstract class AbstractGraphicObject implements IGraphicObject {
 	protected double x, y, width, height;
 	protected float rotation;
 	protected Rectangle hitbox = new Rectangle();
+	protected Rectangle[] hitboxes;
 	protected Texture[] textures = new Texture[1];
 	// The current shown image
 	protected int imageIndex;
@@ -28,6 +29,11 @@ public abstract class AbstractGraphicObject implements IGraphicObject {
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		
+		hitboxes = new Rectangle[4];
+		for(int i = 0; i < hitboxes.length; i++) {
+			hitboxes[i] = new Rectangle();
+		}
 		
 		rotation = 0;
 		imageIndex = 0;
@@ -135,9 +141,32 @@ public abstract class AbstractGraphicObject implements IGraphicObject {
 
 	@Override
 	public boolean intersects(IGraphicObject other) {
-		hitbox.setBounds((int) x, (int) y, (int) width, (int) height);
+		hitbox.setBounds((int) (x-(width/2)), (int) (y-(height/2)), (int) width, (int) height);
 		
-		return hitbox.intersects(other.getX(), other.getY(), other.getWidth(), other.getHeight());
+		return hitbox.intersects(other.getX() - (other.getWidth()/2), other.getY() - (other.getHeight()/2), other.getWidth(), other.getHeight());
 	}
 
+	public boolean northIntersect(IGraphicObject other) {
+		hitboxes[0].setBounds((int)(x-width/2+1), (int)(y-height/2), (int)(width-2), 1);
+		
+		return hitboxes[0].intersects(other.getX() - (other.getWidth()/2), other.getY() - (other.getHeight()/2), other.getWidth(), other.getHeight());
+	}
+		
+	public boolean eastIntersect(IGraphicObject other) {
+		hitboxes[1].setBounds((int)(x+width/2), (int)(y-height/2+1), 1, (int)height);
+		
+		return hitboxes[1].intersects(other.getX() - (other.getWidth()/2), other.getY() - (other.getHeight()/2), other.getWidth(), other.getHeight());
+	}
+	
+	public boolean southIntersect(IGraphicObject other) {
+		hitboxes[2].setBounds((int)(x-width/2+1), (int)(y+height/2), (int)(width-2), 1);
+		
+		return hitboxes[2].intersects(other.getX() - (other.getWidth()/2), other.getY() - (other.getHeight()/2), other.getWidth(), other.getHeight());
+	}
+	
+	public boolean westIntersect(IGraphicObject other) {
+		hitboxes[3].setBounds((int)(x-width/2), (int)(y-height/2+1), 1, (int)height);
+		
+		return hitboxes[3].intersects(other.getX() - (other.getWidth()/2), other.getY() - (other.getHeight()/2), other.getWidth(), other.getHeight());
+	}
 }

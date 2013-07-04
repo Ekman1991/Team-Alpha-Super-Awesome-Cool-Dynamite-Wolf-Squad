@@ -56,10 +56,44 @@ public abstract class AbstractMovableGraphicObject extends
 		
 		// Here we'll insert a check for which tiles you touch
 		
+		//System.out.println(delta);
+		
 		
 		
 		this.x += delta * dx;
 		this.y += delta * dy;
+	
+		if(this.intersects(GameContainer.getContainer().getBlock())) {
+
+			if(dx > 0) {
+				this.x -= delta * dx;
+			}
+			
+			if(dy != 0) {
+				this.y -= delta * dy;
+			}
+			
+			
+			if (this.northIntersect(GameContainer.getContainer().getBlock())) {
+				
+			}
+
+			if (this.eastIntersect(GameContainer.getContainer().getBlock())) {
+				
+			}
+
+			if (this.southIntersect(GameContainer.getContainer().getBlock())) {
+				
+			}
+
+			if (this.westIntersect(GameContainer.getContainer().getBlock())) {
+				
+			}
+			
+		
+		}
+		
+		
 		this.rotation += delta * angle;
 	}
 

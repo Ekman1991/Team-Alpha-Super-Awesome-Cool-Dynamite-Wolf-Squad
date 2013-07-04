@@ -24,4 +24,8 @@ public interface IGraphicObject {
 	public int getCurrentImage();
 	public void setCurrentImage(int index);
 	public boolean intersects(IGraphicObject other);
+	public boolean northIntersect(IGraphicObject other);
+	public boolean eastIntersect(IGraphicObject other);
+	public boolean southIntersect(IGraphicObject other);
+	public boolean westIntersect(IGraphicObject other);
 }
