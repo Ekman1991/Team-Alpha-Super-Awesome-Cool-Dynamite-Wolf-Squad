@@ -135,7 +135,7 @@ public abstract class AbstractGraphicObject implements IGraphicObject {
 
 	@Override
 	public boolean intersects(IGraphicObject other) {
-		hitbox.setBounds((int) (x-(width/2)), (int) (y-(height/2)), (int) width, (int) height);
+		hitbox.setBounds((int) (x-(width/2)), (int) (y-(height/2)), (int) width+1, (int) height+1);
 		
 		return hitbox.intersects(other.getX() - (other.getWidth()/2), other.getY() - (other.getHeight()/2), other.getWidth(), other.getHeight());
 	}
