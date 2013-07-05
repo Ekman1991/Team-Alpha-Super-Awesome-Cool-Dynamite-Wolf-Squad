@@ -65,12 +65,16 @@ public abstract class AbstractMovableGraphicObject extends
 			while(this.intersects(GameContainer.getContainer().getBlock())) {
 				this.x -= dx;
 			}
+			//Code to move the block
+			GameContainer.getContainer().getBlock().x += delta * dx;
 		}
 		this.y += delta * dy;
 		if(this.intersects(GameContainer.getContainer().getBlock())) {
 			while(this.intersects(GameContainer.getContainer().getBlock())) {
 				this.y -= dy;
 			}
+			//Code to move the block
+			GameContainer.getContainer().getBlock().y += delta * dy;
 		}
 		
 		this.rotation += delta * angle;
